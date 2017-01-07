@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="homePage">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  
+  <title></title>
+</head>
+
+<body ng-controller="graph">
+
+  <button ng-click="orderByMe('male')" type="button">male</button>
+  <button type="button">female</button>
+
+  <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
+    
+  <g class="grid x-grid" id="xGrid">
+    <line x1="90" x2="90" y1="5" y2="371"></line>
+  </g>
+  <g class="grid y-grid" id="yGrid">
+    <line x1="90" x2="705" y1="370" y2="370"></line>
+  </g>
+  
+  <!-- create axis X with year from Json -->
+  <g class="labels x-labels" ng-repeat="song in objects.songs[0].data">
+    <text x={{timeLineX[song.year]}} y="400">{{song.year}}</text>
+    <text x="400" y="440" class="label-title">Year</text>
+  </g>
+
+
+  <g class="data" data-setname="Our first data set">
+  
+
+  <!--   <rect x="100" y="200" width="10" height="10"/>
+    <rect x="100" y="180" width="10" height="10"/>
+    <rect x="100" y="160" width="10" height="10"/>
+    <rect x="100" y="140" width="10" height="10"/>
+    <rect x="100" y="120" width="10" height="10"/>
+    <rect x="100" y="100" width="10" height="10"/>
+    <rect x="100" y="80" width="10" height="10"/>
+    <rect x="100" y="60" width="10" height="10"/>
+    <rect x="100" y="40" width="10" height="10"/>
+    <rect x="100" y="20" width="10" height="10"/>
+    <rect x="100" y="0" width="10" height="10"/> -->
+   <!-- <circle cx="677" cy="104" data-value="6.7" r="4"></circle> -->
+  </g>
+  </svg>
+  
+  <!-- create homePage in first time -->
+  <div ng-repeat="song in objects.songs[0].data">        
+    <!-- <h3>{{song.year}}</h3> -->
+
+      <!-- init the div with the class by year that position him in graph
+            each div conatins her top 10 songs -->
+      <div class="year-{{song.year}}">
+        <div  ng-repeat="songDetails in song.songs" ng-init="gender={{songDetails.gender}}">                     
+                <img src='pictures/{{songDetails.artistE}}.jpg'>
+        </div>
+      </div>
+  </div>
+ 
+    
+
+  <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/homePage.js"></script>
+</body>
+</html>
