@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <title></title>
+</head>
+
+<body>
+<header>
+  <h1 id="text">מצעד הפזמונים<br> העברי השנתי</h1>
+ 
+<nav>
+	
+ <button id="top10Button">דירוג</button>    
+  <button id="genderButton">מגדר</button>
+  
+  <button id="categoryButton">ז'אנרים</button>
+  <ul id="genderMenue">
+    <li><br>
+      <input id="check_male" type="checkbox" checked>זכר<br>
+      <input id="check_female" type="checkbox" checked>נקבה<br>
+      <input id="check_band" type="checkbox" checked>מעורב<br>
+    </li>
+  </ul>
+  <ul id="categoryMenue">
+    <li><br>
+      <input id="check_pop" type="checkbox" checked>פופ<br>
+      <input id="check_rock" type="checkbox" checked>רוק<br>
+      <input id="check_israel" type="checkbox" checked>עברי<br>
+      <input id="check_mizrahi" type="checkbox" checked>ים תיכוני<br>
+    </li>
+  </ul>
+
+</nav>
+
+</header>
+
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
+  
+<!-- <g class="grid x-grid" id="xGrid">
+  <line x1="90" x2="90" y1="5" y2="371"></line>
+</g> -->
+
+<g class="grid y-grid" id="yGrid">
+  <line x1="90" x2="1400" y1="600" y2="600"></line>
+</g>
+
+  	<g class="labels x-labels" id="timeLineYear">
+		  <text x="90" y="590">1980</text>
+<!--		  <text x="684" y="665">1981</text>
+		  <text x="684" y="665">1982</text>
+		  <text x="684" y="665">1983</text>
+		  <text x="684" y="665">1984</text>
+		  <text x="684" y="665">1985</text>
+		  <text x="684" y="665">1986</text>
+		  <text x="684" y="665">1987</text>
+		  <text x="684" y="665">1988</text>
+		  <text x="684" y="665">1989</text>
+		  <text x="684" y="665">1990</text>
+		  <text x="684" y="665">1991</text>
+		  <text x="684" y="665">1992</text>
+		  <text x="684" y="665">1993</text>
+		  <text x="684" y="665">1995</text>
+		  <text x="684" y="665">1996</text>
+		  <text x="684" y="665">1997</text>
+		  <text x="684" y="665">1998</text>
+		  <text x="684" y="665">1999</text>
+		  <text x="684" y="665">2000</text>
+		  <text x="684" y="665">2001</text>
+		  <text x="684" y="665">2003</text>
+		  <text x="684" y="665">2004</text>
+		  <text x="684" y="665">2005</text>
+		  <text x="684" y="665">2006</text>
+		  <text x="684" y="665">2007</text>
+		  <text x="684" y="665">2008</text> -->
+		  <text x="1350" y="590">2009</text>
+  		<!--<text x="400" y="590" class="label-title">Year</text> -->
+	</g>
+</g>
+</svg>
+  
+  
+   <script>
+   
+   		$('#genderButton').click(function() {			 
+			 $("#genderMenue").toggle();
+			 $("#genderMenue").css("visibility", "visible");
+		     //$( "#genderMenue" ).slideToggle();	
+		});
+		
+		$('#categoryButton').click(function() {			 
+			 $("#categoryMenue").toggle();
+			 $("#categoryMenue").css("visibility", "visible");	     	
+		});
+   
+
+		$('#top10Button').click(function () {  
+   			 
+   			 var checkboxes = document.getElementsByTagName('input');
+        	 for (var i = 0; i < checkboxes.length; i++) {
+	             if (checkboxes[i].type == 'checkbox') {
+	                checkboxes[i].checked = true;
+	             }
+         	}
+			
+			$('div[data-gender]').each(function() {
+			    this.style.display = 'block'; 
+            }); 
+		    $('div[data-category]').each(function() {
+			    this.style.display = 'block'; 
+            }); 
+			
+		});
+		
+		
+    (function() {
+
+
+      //url for get my data from web service
+      var url = 'https://lab16.herokuapp.com/mlab16/getHomePage';
+      var jsonData;
+
+     //AJAX for get my data from web service
+     $.getJSON(url, function( data ) {
+
+         jsonData = data;
+         console.log(jsonData);
+	
+		var commonWord = {test : 0};
+		var ExitInArray = 0;
+		//var x = 50;
+        $.each(jsonData[0].data, function(index,value) {
+			
+			// var textElement = document.createElement("text");
+			// textElement.setAttribute("x",x+40);
+			// textElement.setAttribute("y","590");
+			
+			 // var year = document.createTextNode(value.year);
+   			 // textElement.appendChild(year);
+			 // x = x+40;
+ 			 
+			 // var g = document.getElementById("timeLineYear");
+			 // g.append(textElement);
+                
+            var divContainer = document.createElement("div");
+            divContainer.className = 'year-'+value.year;
+            
+            console.log('year-'+value.year);
+
+             $.each(value.songs, function(index,value) {
+             	
+              for (var key in commonWord) {
+				  console.log("key " + key + " has value " + commonWord[key]);
+				  if(key == value.mostCommomWord){
+				  	ExitInArray = 1;
+				  	commonWord[value.mostCommomWord] = commonWord[value.mostCommomWord] + 1;				  	
+				  }
+			  }
+              if(ExitInArray == 0){
+				 commonWord[value.mostCommomWord] = 1;
+			  } 
+              ExitInArray = 0;
+               
+              console.log('CommonWord-'+value.mostCommomWord);
+                
+                var divImg = document.createElement("div");
+                divImg.setAttribute("data-gender",value.gender);
+                divImg.setAttribute("data-category",value.category);
+                
+                var img = document.createElement('img');
+                img.src = "images/"+value.artistE+".jpg";
+
+                divImg.append(img);
+                
+                divContainer.append(divImg);        
+            });
+                $("body").append(divContainer);
+                console.log(commonWord);
+                var word = Object.keys(commonWord).reduce(function(a, b){
+                	 return commonWord[a] > commonWord[b] ? a : b;
+                });
+                console.log(word);
+				$("#commonWord").html("Common Word: " + word);
+					
+         });
+      }); 
+
+    })();
+
+	//**Hanle Gender Event **//
+	
+	//if user chosing to show male img by checkBox
+    $("#check_male").change(function() {
+    	
+		//the user hide male img from graph
+        if(this.checked) {
+            console.log('show male');
+            $('div[data-gender="זכר"]').each(function() {
+			    console.log('showing male');
+			    this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide male in graph');
+            $('div[data-gender="זכר"]').each(function() {
+                console.log('hideing male');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+
+	//if user chosing to show female img by checkBox
+    $("#check_female").change(function() {
+    	
+		//the user hide male img from graph
+        if(this.checked) {
+            console.log('show female');
+            $('div[data-gender="נקבה"]').each(function() {
+			    console.log('showing male');
+			    this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide female in graph');
+            $('div[data-gender="נקבה"]').each(function() {
+                console.log('hideing female');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+	
+	//if user chosing to show band img by checkBox
+    $("#check_band").change(function() {
+    	
+		//the user hide male img from graph
+        if(this.checked) {
+            console.log('show female');
+            $('div[data-gender="להקה"]').each(function() {
+			    console.log('showing band');
+			    this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide female in graph');
+            $('div[data-gender="להקה"]').each(function() {
+                console.log('hideing band');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+    
+    $("#check_pop").change(function() {
+        if(this.checked) {
+            console.log('show POP');
+            
+            $('div[data-category="פופ"]').each(function() {
+			     console.log('showing ROCK');
+			   	 this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide female in graph');
+            $('div[data-category="פופ"]').each(function() {
+                console.log('hideing POP');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+    
+    $("#check_rock").change(function() {
+        if(this.checked) {
+            console.log('show ROCK');
+            
+            $('div[data-category="רוק"]').each(function() {
+			     console.log('showing Rock');
+			   	 this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide rock in graph');
+            $('div[data-category="רוק"]').each(function() {
+                console.log('hideing ROCK');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+    
+    $("#check_israel").change(function() {
+        if(this.checked) {
+            console.log('show Israeli');
+            
+            $('div[data-category="עברי"]').each(function() {
+			     console.log('showing Israeli');
+			   	 this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide rock in graph');
+            $('div[data-category="עברי"]').each(function() {
+                console.log('hideing Israeli');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+    
+    $("#check_mizrahi").change(function() {
+        if(this.checked) {
+            console.log('show mizrahi');
+            
+            $('div[data-category="ים תיכוני"]').each(function() {
+			     console.log('showing mizrahi');
+			   	 this.style.display = 'block'; 
+            }); 
+          
+        }
+        else{
+            console.log('hide rock in graph');
+            $('div[data-category="ים תיכוני"]').each(function() {
+                console.log('hideing mizrahi');
+                this.style.display = 'none'; 
+            });
+        }
+    });
+    
+    </script>
+    
+  
+  <h2 id="commonWord"></h2>
+</body>
+</html>
