@@ -1,0 +1,281 @@
+* {margin:0;padding:0;}
+article, header, main, nav, footer, section, aside{ display:block;}
+body {
+ background: black;
+ background-image: url('images/photo.png');
+ min-height: 100%;
+min-width: 1024px;
+width: 100%;
+height: auto;
+position: fixed;
+top: 0;
+left: 0;
+background-size: 100%;
+}
+#wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+.graph .labels.x-labels {
+  text-anchor: middle;
+}
+
+.graph .labels.y-labels {
+  text-anchor: end;
+}
+text{
+  fill:#ffffff;
+  font-family: "Fb scorpion";
+}
+.graph {
+    height: 8%;
+    width: 87%;
+    position: absolute;
+    top: 80%;
+}
+
+.graph .grid {
+  stroke: #ccc;
+  stroke-dasharray: 0;
+  stroke-width: 3;
+}
+
+.labels {
+  font-size: 13px;
+}
+
+.label-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  fill: black;
+}
+
+.data {
+  fill: black;
+  stroke-width: 1; 
+}
+/* End of graph */
+
+/*header*/
+nav{
+  position: absolute;
+  right: 1.83%;
+  top: 3%;
+  width: 11.5%;
+  text-align: right;
+  z-index: 20;
+}
+nav section{
+  background: rgba(100, 100, 100, 0.6);
+  margin-bottom: 3%;
+  position: relative;
+}
+section h5{
+  color: #ffffff;
+  font-family: "Fb scorpion";
+  text-align: center;
+  padding: 4% 0% 4% 0%;
+  margin: 0%;
+ }
+h5 span{
+  margin: 0px 10px 0px 10px;
+  top: 5px;
+  position: relative;
+  font-family: "blender";
+  font-size: 1.204em;/* Approximation due to font substitution */
+font-weight: 400;
+}
+ul{
+  margin: 0%;
+}
+li{
+  list-style: none;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 3% 15% 4.5% 5%;
+  font-family: "blender";
+  cursor: pointer;
+  direction: rtl;
+}
+li span{
+  left: 20%;
+  position: absolute;
+}
+li:hover{
+  padding: 3% 20% 4.5% 5%;
+}
+.blueColor{ /*changing css after clicking on li*/
+  color:#6acce0;
+  list-style-type: disc;
+  list-style-position: inside;
+  list-style-image:url('');
+}
+.divAlbum{
+  display: block;
+}
+#container{
+    width: 80%;
+    top: 210px;
+    left: 90px;
+    position: absolute;
+}
+.clear{
+  clear:both;
+}
+.year_1969,
+.year_1970,.year_1971,.year_1972,.year_1973,.year_1974,.year_1975,.year_1976,.year_1977,.year_1978,.year_1979,
+.year_1980,.year_1981,.year_1982,.year_1983,.year_1984,.year_1985,.year_1986,.year_1987,.year_1988,.year_1989,
+.year_1990,.year_1991,.year_1992,.year_1993,.year_1994,.year_1995,.year_1996,.year_1997,.year_1998,.year_1999,
+.year_2000,.year_2001,.year_2002,.year_2003,.year_2004,.year_2005,.year_2006,.year_2007,.year_2008,.year_2009,
+.year_2010,.year_2011,.year_2012,.year_2013,.year_2014,.year_2015,.year_2016{
+    width: 1.2%;
+    float:left;
+    position: relative;
+    margin:0px auto;
+    margin-right: 0.88%;
+    
+}
+nav h6{
+ color: #ffffff;
+    text-align: center;
+    font-family: "Blender";
+    font-size: 0.8em;
+    font-weight: 400;
+    transform: scaleY(1.4);
+}
+nav h3{
+   color: #ffffff;
+    text-align: center;
+    font-family: "BlenderConsensed";
+    font-size: 1.7em;
+    font-weight: 400;
+    transform: scaleY(1.4);
+
+}
+#text{
+  margin-top:10%;
+  background: none;
+}
+img{
+   display: block;
+    width: 15px;
+    height:15px;
+    position: relative;
+    transition: all .35s;
+    transition-delay: all .35s;
+    cursor: pointer;
+    margin-bottom: 5px;
+
+}
+img:hover {
+  transform: scale(9);
+  z-index: 99999999;
+  transition-delay: all 0s;
+ }
+ /*All the bottom data*/
+ #footerData{
+    bottom: 0%;
+    position: absolute;
+    width: 85%;
+ }
+ .common_word,.common_hashtag,.common_category{
+  position: relative;
+  float: right;
+  padding-bottom: 4%;
+ }
+ .common_hashtag{
+  right:20%;
+ }
+#commonWord{
+    font-family: "Fb scorpion";
+    color: #ffffff;
+}
+/*End of All the bottom data*/
+/* Cursor  */
+#current_year {
+    z-index: 3;
+    font-size: 12px;
+    font-weight: 700;
+    -webkit-transition: margin-left .3s linear;
+    -moz-transition: margin-left .3s linear;
+    transition: margin-left .3s linear;
+    margin-left: -175px;
+    width: 160px;
+    height: 16px;
+    margin-top: 37px;
+}
+
+#current_year span {
+    font-weight: 400;
+}
+
+#cursor,#line {
+    background: #fff;
+}
+#line {
+    width: 1px;
+    top: 0;
+    opacity: 0.5;
+}
+#line, #mouse_move {
+    position: absolute;
+    height: 100%;
+}
+#mouse_move {
+    z-index: 14;
+    cursor: none;
+}
+
+.graph #mouse_move {
+    display: block;
+}
+
+.round #mouse_move {
+    display: none!important;
+}
+#cursor {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    -webkit-transition: width .5s, height .5s, margin-left .5s, margin-top .5s, margin-right .5s, margin-bottom .5s;
+    -moz-transition: width .5s, height .5s, margin-left .5s, margin-top .5s, margin-right .5s, margin-bottom .5s;
+    transition: width .5s, height .5s, margin-left .5s, margin-top .5s, margin-right .5s, margin-bottom .5s;
+    margin-left: -7px;
+}
+#current_year{
+  display: none;
+}
+
+#current_year h6{
+  text-align: right;
+  font-size: 1.2em;
+  color:#ffffff;
+  direction: rtl;
+  font-family: "Blender";
+}
+#current_year #position{
+  color:#6acce0;
+   font-size: 1.3em;
+}
+#current_year #artistName{
+  font-weight: bold;
+}
+#songLyrics{
+  width: 270px;
+    background: rgba(100, 100, 100, 0.6);
+    color: #ffffff;
+    font-family: "Fb scorpion";
+    padding: 2em;
+    position: absolute;
+    z-index: 9999999999;
+    direction: rtl;
+    top: 70px;
+    left: -334px;
+    display: none;
+}
+
+
+/* end of Cursor  */
