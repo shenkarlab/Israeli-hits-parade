@@ -1,7 +1,11 @@
+
 //------------Connect to mongodb on mLab via Mongoose---------------//
 var mongoose = require('mongoose');
 config = {
-    mongoUrl:'mongodb://db_usr:db_pass@ds149278.mlab.com:49278/lab16'
+   // mongoUrl:'mongodb://db_usr:db_pass@ds061335.mlab.com:61335/todo'
+   //mongoUrl:'mongodb://db_usr:db_pass@ds131099.mlab.com:31099/lab'
+    mongoUrl:'mongodb://db_usr:db_pass@ds133249.mlab.com:33249/lab16'
+
 };
 //The server option auto_reconnect is defaulted to true
 var options = {
@@ -10,7 +14,7 @@ var options = {
     }
 };
 mongoose.connect(config.mongoUrl, options);
-mongoose.Promise = global.Promise;
+
 db  = mongoose.connection;
 
 // Event handlers for Mongoose
@@ -27,20 +31,3 @@ db.on('disconnected', function() {
 db.on('reconnected', function () {
     console.info('Mongoose reconnected!');
 });
-
-function exitHandler(options, err) {
-    if (options.cleanup){
-     mongoose.disconnect();
-     console.log('clean system');
-    }
-    if (err) console.log(err.stack);
-    if (options.exit) process.exit();
-}
-
-process.on('exit', exitHandler.bind(null,{cleanup:true}));
-
-//catches ctrl+c event
-process.on('SIGINT', exitHandler.bind(null, {exit:true}));
-
-//catches uncaught exceptions
-process.on('uncaughtException', exitHandler.bind(null, {exit:true}));

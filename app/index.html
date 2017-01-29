@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <script src="http://mbostock.github.com/d3/d3.v2.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   <title></title>
@@ -14,39 +15,45 @@
  <nav>
   <section>
     <h5>  ______  <span> מגדר </span>  ______  </h5>
-    <ul>
-      <li id="check_female">  נשים <span></span></li>
-      <li id="check_male" > גברים <span></span></li>
-      <li id="check_band" > מעורב <span></span></li>
-    </ul> 
+    <label id="label_female"><input id="check_female" type="radio" name="radAnswer" value="female">נשים<span></span> </input>  </label>
+    <label id="label_male"><input id="check_male" type="radio" name="radAnswer" value="male">גברים<span></span></input>  </label>
+    <label id="label_band"><input id="check_band" type="radio" name="radAnswer" value="band">להקה<span></span></input>  </label>
+    
+
+      <!-- <div>  נשים <span></span>  <input id="check_female" type="radio" name="radAnswer" class="radioHide">  </div>
+      <label> נשים <span></span> <input id="check_male" type="radio" name="radAnswer" >   </label> 
+       <label>  גברים <span></span> </label> <input id="check_band" type="radio" name="radAnswer" >
+ -->
+     
   </section>
+
   <section>
   <h5>  ______  <span> נושאים </span>  ______  </h5>
-    <ul>
-      <li id="check_female" > אהבה <span></span></li>
-      <li id="check_male" > מלחמה <span></span></li>
-      <li id="check_band"> משפחה <span></span></li>
-      <li id="check_band"> אופטימיות <span></span></li>
-      <li id="check_band"> מולדת <span></span></li>
-      <li id="check_band"> ריקודים <span></span></li>
-      <li id="check_band"> דת ואמונה <span></span></li>
-      <li id="check_band"> כאב <span></span></li>
-    </ul>
+    
+    <label id="label_love"><input id="check_love" type="radio" name="radAnswer" value="love">אהבה<span></span> </input>  </label>
+    <label id="label_dance"><input id="check_dance" type="radio" name="radAnswer" value="dance">ריקודים<span></span></input>  </label>
+    <label id="label_pain"><input id="check_pain" type="radio" name="radAnswer" value="pain">כאב<span></span></input>  </label>
+    <label id="label_family"><input id="check_family" type="radio" name="radAnswer" value="family">משפחה<span></span></input>  </label>
+    <label id="label_country"><input id="check_country" type="radio" name="radAnswer" value="country">מדינה<span></span></input>  </label>
+    <label id="label_optimic"><input id="check_optimic" type="radio" name="radAnswer" value="optimic">אופיטמיות<span></span></input>  </label>
+
+ 
   </section>
+
   <section>
   <h5>  ______  <span> סגנון </span>  ______  </h5>
-    <ul>
-      <li id="check_rock"> רוק <span></span></li>
-      <li id="check_pop"> פופ <span></span></li>
-      <li id="check_mizrahi"> ים-תיכוני <span></span></li>
-      <li id="check_israel"> זמר עברי <span></span></li>
-    </ul>
+   
+    <label id="label_rock"><input id="check_rock" type="radio" name="radAnswer" value="rock">רוק<span></span> </input>  </label>
+    <label id="label_pop"><input id="check_pop" type="radio" name="radAnswer" value="pop">פופ<span></span></input>  </label>
+    <label id="label_mizrahi"><input id="check_mizrahi" type="radio" name="radAnswer" value="mizrahi">ים תיכוני<span></span></input>  </label>
+    <label id="label_israel"><input id="check_israel" type="radio" name="radAnswer" value="israel">זמר עברי<span></span></input>  </label>
+   
   </section>
+
   <section>
-    <ul>
-      <li>בחר הכל <span></span></li>
-    </ul>
+     <label id="label_all"><input id="check_all" type="radio" name="radAnswer" value="all">בחר הכל<span></span> </input>  </label>
   </section>
+
   <section id="text">
   <h3>מצעד הפזמונים השנתי</h3>
   <h6>עשרת הראשונים של כל הזמנים</h6>
@@ -56,53 +63,52 @@
 <div class="clear"></div>
 
 <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="graph" aria-labelledby="title" role="img">
-<g class="grid y-grid" id="yGrid">
- <line x1="90" x2="1290" y1="50" y2="50"></line>
-</g>
-    <g class="labels x-labels" id="timeLineYear">
-      <text x="100" y="40">1969</text>
-      <text x="1280" y="40">2016</text>
-      <!--<text x="400" y="590" class="label-title">Year</text> -->
-  </g>
-</g>
 </svg>
   
+
+<div id="yearLine">
+  <h6>1969</h6>
+  <span class="left"></span>
+  <span class="right"></span>
+  <h6 class="y2016">2016</h6>
+  </div>
+
+<div id="mouse_move">
+  <div id="current_year">
+      <h6><span id="position"></span><span id="artistName"></span> <span id="songName"></span> </h6>
+  </div>
+  <div id="yearNow">
+    <h6></h6>
+  </div>
+  <div id="line"></div>
+  <div id="cursor"></div>
+  <div id="songLyrics"></div>
+  <div id="songLyrics2"></div>
+</div>
+
   <div id="footerData">
     <section class="common_word">
       <h6 id="commonWord"></h6>
     </section>
     <section class="common_hashtag">
-      <h6 id="commonWord"></h6>
+      <h6 id="commonHashtag"></h6>
     </section>
     <section class="common_category">
-      <h6 id="commonWord"></h6>
+      <h6 id="commonCatregory"></h6>
     </section>
+    <section class="sum_words">
+      <h6 id="sumWords"></h6>
+    </section>
+    <!-- graph -->
+    <div id="graph" class="aGraph" style="position:absolute;top:0px;left:0; float:left;"></div>
 
-    
   </div>
 
+</div> <!--end of wrapper-->
 
-   <script>
-    $('#top10Button').click(function () {  
-         
-         var checkboxes = document.getElementsByTagName('input');
-           for (var i = 0; i < checkboxes.length; i++) {
-               if (checkboxes[i].type == 'checkbox') {
-                  checkboxes[i].checked = true;
-               }
-          }
-      $('div[data-gender]').each(function() {
-          this.style.display = 'block'; 
-            }); 
-        $('div[data-category]').each(function() {
-          this.style.display = 'block'; 
-            }); 
-      
-    });
-    
-    
+<script>
+
     (function() {
-
 
       //url for get my data from web service
       var url = 'https://lab1616.herokuapp.com/lab16/getHomePageDetails';
@@ -114,9 +120,6 @@
         jsonData = data;
         console.log(jsonData);
   
-        var commonWord = {test:0};
-        var ExitInArray = 0;
-
         $.each(jsonData, function(index,value) {
             
             var divContainer = document.createElement("div");
@@ -125,29 +128,7 @@
             divContainer.className = 'year_'+value.year;
             
             $.each(value.songs, function(index,value) {
-              
-              // console.log('songName '+value.songName);
-              // console.log('wordsAmount '+value.wordsAmount);
-              // console.log('position '+value.position);
-              // console.log('commonWordInLyrics '+value.commonWordInLyrics);
-              // //console.log('image '+value.image);
-              // console.log('gender '+value.gender);
-              // console.log('commonWordInLyrics '+value.commonWordInLyrics);
-              // console.log('category '+value.category);
-              
-              //check common word in each object and insert him to map
-              for (var key in commonWord) {
-                 //console.log("key " + key + " has value " + commonWord[key]);
-              if(key == value.commonWordInLyrics){
-                ExitInArray = 1;
-                commonWord[value.commonWordInLyrics] = commonWord[value.commonWordInLyrics] + 1;            
-                }
-              }
-              if(ExitInArray == 0){
-                commonWord[value.commonWordInLyrics] = 1;
-              } 
-              ExitInArray = 0;
-                    
+                
               var divImg = document.createElement("div");
               divImg.className += "divAlbum";
               divImg.setAttribute("gender",value.gender);
@@ -155,13 +136,25 @@
               divImg.setAttribute("songName",value.songName);
               divImg.setAttribute("category",value.category);
               divImg.setAttribute("artist",value.artist);
+              divImg.setAttribute("subject",value.subject);
+              divImg.setAttribute("commonWord",value.commonWordInLyrics);
+              divImg.setAttribute("wordsAmount",value.wordsAmount);
+
+              sessionStorage.setItem(value.songName, value.lyricsHtml);
+
               
               var img = document.createElement('img');
-              img.src = value.lyricsUrl;
-
+              if( value.lyricsUrl == '/jsp/images/152x200.gif'){
+                img.src = value.image;
+              }
+              else if(value.lyricsUrl == ''){
+                img.src = value.image;
+              }
+              else{
+                img.src = value.lyricsUrl
+              }
               divImg.append(img);
               
-
               divContainer.append(divImg);  
               showDiv.append(divContainer);
 
@@ -170,50 +163,245 @@
           
                 $("#container").append(showDiv);
 
-                
-                //get the common word from map
-                var word = Object.keys(commonWord).reduce(function(a, b){
-                   return commonWord[a] > commonWord[b] ? a : b;
-                });
-
-                //console.log(word);
-                $("#commonWord").html("מילה נפוצה: " + word);
-          
          });
 
                 //init the values of gender menu side with numbers  
-                $("#check_female span").html($('div[gender ="זמרת"]').length);
-                $("#check_male span").html($('div[gender ="זמר"]').length); 
-                $("#check_band span").html($('div[gender ="להקה"]').length); 
+                $("#label_female span").html($('div[gender ="זמרת"]').length);
+                $("#label_male span").html($('div[gender ="זמר"]').length); 
+                $("#label_band span").html($('div[gender ="להקה"]').length); 
 
-                //init the valueדs of category menu side with numbers
-                $("#check_rock span").html($('div[category="רוק"]').length); 
-                $("#check_pop span").html($('div[category="פופ"]').length); 
-                $("#check_mizrahi span").html($('div[category="מוזיקה מזרחית"]').length); 
-                $("#check_israel span").html($('div[category="זמר עברי"]').length); 
-                
+                //calc maount of subject for each subject 
+                calcSubject();
+                //calc maount of category for each subject 
+                calcCategory();
+                commonWord();
+                //initGraph();
       }); 
 
 
     })();
 
-  //**Hanle Gender Event **//
-  // function divLengthFun(){
-  //   if ($('.year_1971 > div[show ="no"]').length == 7) {
-  //     $(this).css("top", "20px");
 
-  //   };
-  // };
+  function sumWordsForGraph(){
+
+      var data = [];  
+      var position = 0;
+      for(index=1969 ; index < 2017 ; index ++){
+
+          var sum = 0;
+          var amount;
+
+          $('.year_'+index+' .divAlbum:not([show])').each(function() {
+            
+            amount =  $(this).attr("wordsamount");
+            
+            if(amount != 'undefined'){
+                amount = parseInt(amount);
+                sum = sum + amount;
+            }
+          });
+          
+          data[position]=sum;
+          //console.log('data[position]' + data[position]);
+          position++;
+
+      }
+      for(index=0 ; index < data.length ; index ++){
+          console.log('data[index]' + data[index]);
+      }
+      return data;
+  }
+
+
+  function sumWords(classNameByYear){
+    
+    var sum = 0;
+    var amount;
+
+    $('.'+classNameByYear+' .divAlbum:not([show])').each(function() {
+      
+      amount =  $(this).attr("wordsamount");
+      
+      if(amount != 'undefined'){
+          amount = parseInt(amount);
+          sum = sum + amount;
+      }
+    });
+    
+    return sum;
+   
+
+  }
+
+  function commonWord(){
+
+  var commonWord = {init:0};
+  var commonArtist = {init:0}
+  var ExitInArray = 0;
+  var ExitInArray2 = 0
+
+  $('.divAlbum:not([show])').each(function() {  
+
+    var artist  = $(this).attr("artist");
+    var word  = $(this).attr("commonWord");
+
+    for (var key in commonArtist) {
+      if(artist != 'undefined'){
+          if(key == artist){
+            ExitInArray2 = 1;
+            commonArtist[artist] = commonArtist[artist] + 1;            
+          }
+      }
+    }
+    if(ExitInArray2 == 0){
+      if(artist != 'undefined'){
+        commonArtist[artist] = 1;
+      }
+    } 
+    ExitInArray2 = 0;
+
+    for (var key in commonWord) {
+      if(word != 'undefined'){
+          if(key == word){
+            ExitInArray = 1;
+            commonWord[word] = commonWord[word] + 1;            
+          }
+      }
+    }
+    if(ExitInArray == 0){
+      if(word != 'undefined'){
+        commonWord[word] = 1;
+      }
+    } 
+    ExitInArray = 0;
+  });
+
+  //get the common word from map
+  var word = Object.keys(commonWord).reduce(function(a, b){
+     return commonWord[a] > commonWord[b] ? a : b;
+  });
+  //get the common artist from map
+  var artist = Object.keys(commonArtist).reduce(function(a, b){
+     return commonArtist[a] > commonArtist[b] ? a : b;
+  });
+  $("#commonWord").html("מילה נפוצה | " + word);
+  $("#commonCatregory").html("זמר | " + artist);
+
+  }
+  function calcCategory(){
+
+    var rock = 0;
+    var pop = 0;
+    var mizrahi = 0;
+    var hebrew = 0;
+
+
+    $('.divAlbum:not([show]').each(function() {
+                      
+        var category  = $(this).attr( "category" ).split(",");
+        
+        for(index=0 ; index < category.length ; index++){
+            if(category[index] == 'רוק'){
+              rock++;
+            }
+            else if(category[index] == 'פופ'){
+              pop++;
+            }
+            else if(category[index] == 'מוזיקה מזרחית'){
+              mizrahi++;
+            }
+            else{
+              hebrew++;
+            }
+
+    }
+
+    $("#label_rock span").html(rock); 
+    $("#label_pop span").html(pop); 
+    $("#label_mizrahi span").html(mizrahi); 
+    $("#label_israel span").html(hebrew); 
+
+    });
+  }
+
+  function calcSubject(){
+
+
+    var love = 0;
+    var pain = 0;
+    var country = 0;
+    var family = 0;
+    var dance = 0;
+    var optimic = 0;
+
+    $('.divAlbum:not([show]').each(function() {
+                      
+        var subject  = $(this).attr( "subject" ).split(",");
+        
+        for(index=0 ; index < subject.length ; index++){
+            if(subject[index] == 'אהבה'){
+              love++;
+            }
+            else if(subject[index] == 'כאב'){
+              pain++;
+            }
+            else if(subject[index] == 'מולדת'){
+              country++;
+            }
+            else if(subject[index] == 'אופטימיות'){
+              optimic++;
+            }
+            else if(subject[index] == 'ריקודים'){
+              dance++;
+            }
+            else{
+              family++;
+            }
+
+      }
+
+    });
+
+    var highest = Math.max(love,pain,country,optimic,dance,family);
+    if(highest == love){
+      $('#commonHashtag').html("נושא | " + 'אהבה');
+    }
+    else if(highest == pain){
+      $('#commonHashtag').html("נושא | " + 'כאב');
+    }
+    else if(highest == country){
+      $('#commonHashtag').html("נושא | " + 'מולדת');
+    }
+    else if(highest == optimic){
+      $('#commonHashtag').html("נושא | " + 'אופטימיות');
+    }
+    else if(highest == dance){
+      $('#commonHashtag').html("נושא | " + 'ריקודים');
+    }
+    else{
+      $('#commonHashtag').html("נושא | " + 'משפחה');
+    }
+    
+    $("#label_love span").html(love); 
+    $("#label_family span").html(family); 
+    $("#label_pain span").html(pain); 
+    $("#label_country span").html(country); 
+    $("#label_optimic span").html(optimic); 
+    $("#label_dance span").html(dance); 
+
+
+  }
+
   function divLengthFun(){
 
   $('.showClass div:first-child').each(function() {
 
-          if (($(this).children('div[show ="no"]').length == 0 || $(this).children('div[show ="no"]').length == 1)) {
+      if (($(this).children('div[show ="no"]').length == 0 || $(this).children('div[show ="no"]').length == 1)) {
       $(this).css("top", "0px");
       } 
       else if(($(this).children('div[show ="no"]').length == 2 || $(this).children('div[show ="no"]').length == 3)){
       $(this).css("top", "20px");
-      console.log("this is" +this);
+      
       } 
       else if(($(this).children('div[show ="no"]').length == 4 || $(this).children('div[show ="no"]').length == 5)){
       $(this).css("top", "40px");
@@ -226,178 +414,284 @@
       }
 
       });
-      }
-      function clear(){
-        $('.showClass div:first-child').each(function() {
-          $(this).css("top", "0px");
-        });
-      }
-              
-  //if user chosing to show MALE img by clicking
-  $(document).ready(function() {
+  }
+  
+  // Count function:
+  function calcNumbers(){
 
-    $('#check_male').on('click',function() {
+    var femaleLength=  $('div[gender ="זמרת"]:not([show])').length; 
+    var maleLength=  $('div[gender ="זמר"]:not([show])').length;
+    var bandLength=  $('div[gender ="להקה"]:not([show])').length;
+    var popLength=  $('div[category="פופ"]:not([show])').length;
+    var rockLength=  $('div[category="רוק"]:not([show])').length;
+    var hebrewLength=  $('div[category="זמר עברי"]:not([show])').length;
+    var mizrahiLength=  $('div[category="מוזיקה מזרחית"]:not([show])').length;
 
-        if($('#check_female').hasClass( "blueColor" ))  {
+    $("#label_female span").html(femaleLength);
+    $("#label_male span").html(maleLength);
+    $("#label_band span").html(bandLength);
+    $("#label_rock span").html(rockLength);
+    $("#label_pop span").html(popLength);
+    $("#label_mizrahi span").html(mizrahiLength); 
+    $("#label_israel span").html(hebrewLength);
+                       
+  }
 
-            $('#check_female').removeClass("blueColor");
-            $('div[gender ="זמרת"]').slideToggle("fast");
+  //brush checked label 
+  $('input').on('change', function() {
+     
+    $('label').css("color" , "#fff");
+    $('#label_'+$('input[name=radAnswer]:checked').val()).css("color" , "#6acce0").css("left","-3%");
 
-        }
-        else if($('#check_band').hasClass( "blueColor" )){
-            $('#check_band').removeClass("blueColor");
-            $('div[gender ="להקה"]').slideToggle("fast");
-        }
+  })
 
-        $('#check_male').addClass("blueColor");
-        $('div[gender ="זמר"]').slideToggle("fast");
-
-
-            // console.log("inside check_male function");
-            // if($(this).hasClass( "blueColor" )){
-
-            //     console.log("check_male have blueColor class");
-
-            //     if($('#check_female').hasClass( "blueColor" )){
-
-            //     }
-            //     else{
-            //        console.log("female not checked");
-            //        $('div[gender ="זמרת"]').slideToggle("fast");
-            //     }
-            //     if($('#check_band').hasClass( "blueColor" )){
-
-            //     }
-            //     else{
-            //        console.log("band not checked");
-            //        $('div[gender ="להקה"]').slideToggle("fast");
-            //     }
-             
-            // }
-
-            // else{
-
-            //     console.log("check_male not have blueColor class");
-            //     //female and band is not checked
-            //     if((!$('#check_female').hasClass( "blueColor" )) && (!$('#check_band').hasClass( "blueColor" ))){
-
-            //         $('div[gender ="להקה"]').slideToggle("fast");
-            //         $('div[gender ="זמרת"]').slideToggle("fast");
-            //     }
-            //     if(($('#check_female').hasClass( "blueColor" )) || ($('#check_band').hasClass( "blueColor" ))){
-            //         console.log("only check_male or check_band have blueColor class");
-            //         $('div[gender ="זמר"]').slideToggle("fast");
-            //     }
+  $('#check_male').on('click',function() {
+            
+    console.log("male");
+    
+    $(".divAlbum").removeAttr("show");
+    $('div[gender]').not('div[gender="זמר"]').hide();
+    $('div[gender]').not('div[gender="זמר"]').attr("show","no");
+    divLengthFun();
+    $('div[gender="זמר"]').show();
+    calcNumbers();
+    commonWord();
+    calcSubject();
+    calcCategory();
 
 
-            // }
-    });
-  });
+   });
   //if user chosing to show FEMALE img by clicking
-    $('#check_female').on('click',function() {
+  $('#check_female').on('click',function() {
 
-      
-    });
-    //if user chosing to show BAND img by clicking
-    $('#check_band').on('click',function() {
-      clear();
-          $('div[gender]').not('div[gender ="להקה"]').slideToggle("fast");
-           $('div[gender]').not('div[gender ="להקה"]').attr("show","no");
-            
-         
-    });
-   //if user chosing to show POP img by clicking
-    $('#check_pop').on('click',function() {
-            $('div[category]').not('div[category="פופ"]').slideToggle("fast").attr("show","no");
-           
-    });
-     //if user chosing to show ROCK img by clicking
-    $('#check_rock').on('click',function() {
-            $('div[category]').not('div[category="רוק"]').slideToggle("fast").attr("show","no");
-            
-    });
-    //if user chosing to show ISRAELI img by clicking
-    $('#check_israel').on('click',function() {
-            $('div[category]').not('div[category="עברי"]').slideToggle("fast").attr("show","no");
-            
-    }); 
-    //if user chosing to show MIZRAHI img by clicking
-    $('#check_mizrahi').click(function() {
-            $('div[category]').not('div[category="ים תיכוני"]').slideToggle("fast").attr("show","no");
-            
-    });
-
-    // Count function:
-    /*
-    $('#check_female,check_male, #check_band, #check_pop, #check_rock, #check_israel, #check_mizrahi').on('click',function() {
-          
-          if ($('.divAlbum').attr('show') == 'no'){
-            femaleLength=0;
-            maleLength=0;
-            bandLength=0;
-            popLength=0;
-            rockLength=0;
-            hebrewLength=0;
-            mizrahiLength=0; 
-          }else{
-          var femaleLength=  $('div[gender ="נקבה"]').length; 
-          var maleLength=  $('div[gender ="זכר"]').length;
-          var bandLength=  $('div[gender ="להקה"]').length;
-          var popLength=  $('div[category="פופ"]').length;
-          var rockLength=  $('div[category="רוק"]').length;
-          var hebrewLength=  $('div[category="עברי"]').length;
-          var mizrahiLength=  $('div[category="ים תיכוני"]').length;
-
-          }
-          $("#check_female span").html(femaleLength);
-          $("#check_male span").html(maleLength); 
-          $("#check_band span").html(bandLength); 
-          $("#check_pop span").html(popLength); 
-          $("#check_rock span").html(rockLength); 
-          $("#check_israel span").html(hebrewLength);
-          $("#check_mizrahi span").html(mizrahiLength); 
-    }); 
-    */
-
-    //for list change color and circle in Click!
-  $('li').click( function() {
-    $(this).toggleClass("blueColor");
+    console.log("female");
+   
+    $(".divAlbum").removeAttr("show");
+    $('div[gender]').not('div[gender="זמרת"]').hide();
+    $('div[gender]').not('div[gender="זמרת"]').attr("show","no");
+    divLengthFun();
+    $('div[gender="זמרת"]').show(); 
+    commonWord();
+    calcNumbers();
+    calcSubject();
+    calcCategory();
   });
+  //if user chosing to show BAND img by clicking
+  $('#check_band').on('click',function() {
+            
+    console.log("band");
+
+    $(".divAlbum").removeAttr("show");
+    $('div[gender]').not('div[gender="להקה"]').hide();
+    $('div[gender]').not('div[gender="להקה"]').attr("show","no");
+    divLengthFun();
+    $('div[gender="להקה"]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();
+    calcCategory();
+  });
+
+  $('#check_all').on('click',function() {
+            
+    console.log("all");
+    $(".divAlbum").removeAttr("show");
+    divLengthFun();
+    $('div[gender]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();
+    calcCategory();
+  });
+
+   //if user chosing to show POP img by clicking
+  $('#check_pop').on('click',function() {
+
+    $(".divAlbum").removeAttr("show");
+    $('div[category]').not('div[category*="פופ"]').hide();
+    $('div[category]').not('div[category*="פופ"]').attr("show","no");
+    
+    divLengthFun();
+    $('div[category*="פופ"]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();  
+    calcCategory(); 
+        
+           
+  });
+   //if user chosing to show ROCK img by clicking
+  $('#check_rock').on('click',function() {
+     
+    $(".divAlbum").removeAttr("show");
+    $('div[category]').not('div[category*="רוק"]').hide();
+    $('div[category]').not('div[category*="רוק"]').attr("show","no");
+    
+    divLengthFun();
+    $('div[category*="רוק"]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();  
+    calcCategory(); 
+          
+  });
+  //if user chosing to show ISRAELI img by clicking
+  $('#check_israel').on('click',function() {
+         
+    $(".divAlbum").removeAttr("show");
+    $('div[category]').not('div[category*="זמר עברי"]').hide();
+    $('div[category]').not('div[category*="זמר עברי"]').attr("show","no");
+    
+    divLengthFun();
+    $('div[category*="זמר עברי"]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();  
+    calcCategory(); 
+          
+  }); 
+  //if user chosing to show MIZRAHI img by clicking
+  $('#check_mizrahi').click(function() {
+    
+    $(".divAlbum").removeAttr("show");
+    $('div[category]').not('div[category*="מוזיקה מזרחית"]').hide();
+    $('div[category]').not('div[category*="מוזיקה מזרחית"]').attr("show","no");
+    
+    divLengthFun();
+    $('div[category*="מוזיקה מזרחית"]').show();
+    commonWord();
+    calcNumbers();
+    calcSubject();  
+    calcCategory(); 
+  });
+
+  $('#check_love').click(function() {
+
+      console.log("love");
+
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="אהבה"]').hide();
+      $('div[subject]').not('div[subject*="אהבה"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="אהבה"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject();
+      calcCategory();
+  });
+
+  $('#check_pain').click(function() {
+      
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="כאב"]').hide();
+      $('div[subject]').not('div[subject*="כאב"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="כאב"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject();
+      calcCategory();
+  });
+
+  $('#check_family').click(function() {
+      
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="משפחה"]').hide();
+      $('div[subject]').not('div[subject*="משפחה"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="משפחה"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject();  
+      calcCategory(); 
+  });
+
+  $('#check_country').click(function() {
+      
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="מולדת"]').hide();
+      $('div[subject]').not('div[subject*="מולדת"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="מולדת"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject(); 
+      calcCategory();  
+  });
+
+  $('#check_optimic').click(function() {
+      
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="אופטימיות"]').hide();
+      $('div[subject]').not('div[subject*="אופטימיות"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="אופטימיות"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject();  
+      calcCategory(); 
+  });
+
+  $('#check_dance').click(function() {
+      
+      $(".divAlbum").removeAttr("show");
+      $('div[subject]').not('div[subject*="ריקודים"]').hide();
+      $('div[subject]').not('div[subject*="ריקודים"]').attr("show","no");
+      
+      divLengthFun();
+      $('div[subject*="ריקודים"]').show();
+      commonWord();
+      calcNumbers();
+      calcSubject();   
+      calcCategory();
+  });
+
+
 
 // for opacity on click
- var click = 1;
+  var click = 1;
   $(document).on("click",".divAlbum",function() {
     var value = $(this).attr('artist');
-    console.log("in female" + value);
-    $( "#songLyrics" ).toggle();
     if(click == 1){
-      console.log("onclick = " + click);
-
       $('.divAlbum').each(function() {
-
-      console.log($(this).attr("artist"));
-      
       if($(this).attr("artist") == value){
         $(this).css( "opacity", "1");
-        console.log(value);
-
       }
       else{
         $(this).css( "opacity", "0.1");
-        console.log("not" + value);
       }
       click = 0;
        }); 
     } 
     else{
-      console.log("onclick = " + click);
       $('.divAlbum').css( "opacity", "1");
       click = 1;
     }
-    // for the lyrics:
-
   });
- 
+
+//lyrics
+$(document).on("click",".divAlbum",function() {
+
+    var artist = $(this).attr('artist');
+    var songName = $(this).attr('songName');
+
+    var classYear = $(this).parent().prop('className').split('_')[1];
+
+    if(classYear < 1980){
+      $("#songLyrics2").html(sessionStorage.getItem(songName));
+      $( "#songLyrics2" ).toggle();
+    }
+    else{
+      $("#songLyrics").html(sessionStorage.getItem(songName));
+      $("#songLyrics").toggle();
+    }
+
+});
 
 $(document).mousemove(function(e) {
     $('#mouse_move').offset({
@@ -416,53 +710,82 @@ $(document).mousemove(function(e) {
              $("#position").html("#"+value1+ " "); 
              $("#artistName").html(value2+", ");
              $("#songName").html(value3);
-      $("#current_year").css("display","block");
+
+             var className = $(this).parent().prop('className');
+             var sum = sumWords(className);
+             //console.log('sum: ' + sum)
+             ;
+            $("#yearNow h6").html(className.split('_')[1]);
+            $("#current_year, #yearNow").css("display","block");
+            $('#sumWords').html("מספר מילים | " + sum);
   });
+
   $(document).on("mouseout",".divAlbum",function() {
-      $("#current_year, #songLyrics").css("display","none");
+      $("#current_year, #songLyrics, #yearNow, #songLyrics2").css("display","none");
   });
 
-    </script>
 
-<div id="mouse_move">
-  <div id="current_year">
-      <h6><span id="position"></span><span id="artistName"></span> <span id="songName"></span> </h6>
-  </div>
-  <div id="line"></div>
-  <div id="cursor"></div>
-  <div id="songLyrics">
-  <p>
-    אדם בונה ביתו בדם ויגע 
-מלילו ויומו 
-ובסופה עזה, ממש בן רגע 
-הוא חרב, כן, חרב עולמו. 
-<br><br>
-עוד שנה ועוד שנה 
-הזמן הוא גלגל ענק 
-ומחר עוד יום שממרומיו 
-נדאה למרחק. 
-<br><br>
-מעגל נפתח בכל שנה 
-ומעגל נסלח בכל שנה 
-ואם דבר לא השתנה 
-מחר ודאי נצחק. 
-מעלה כשזה טוב 
-ולא נורא כשמטה, אם זה רע - 
-תמיד יש עוד ברירה - 
-הזמן הוא כמו גלגל ענק. 
-<br><br>
-אדם אוהב תמיד בתום ולהט 
-ביומו ולילו 
-פתאום כמו רוח פרא לא נודעת 
-נעלם, נעלם חלומו. 
-<br><br>
-עוד שנה ועוד שנה...  
-  </p>
-</div>
-</div>
+  function initGraph(){
 
-<div id="line2"></div>
+    /* implementation heavily influenced by http://bl.ocks.org/1166403 */
+    
+    // define dimensions of graph
+    var m = [80, 80, 80, 80]; // margins
+    var w = 300 - m[1] - m[3]; // width
+    var h = 350 - m[0] - m[2]; // height
+    
+    // create a simple data array that we'll plot with a line (this array represents only the Y values, X will just be the index location)
+    
+    //var data = sumWordsForGraph();
+    //var data = [150,60,44,72,12];
+    // X scale will fit all values from data[] within pixels 0-w
+    var x = d3.scale.linear().domain([0, data.length]).range([0, w]);
+    // Y scale will fit values from 0-10 within pixels h-0 (Note the inverted domain for the y-scale: bigger is up!)
+    var y = d3.scale.linear().domain([0, 10]).range([h, 0]);
+      // automatically determining max range can work something like this
+      // var y = d3.scale.linear().domain([0, d3.max(data)]).range([h, 0]);
 
-</div> <!--end of wrapper-->
+    // create a line function that can convert data[] into x and y points
+    var line = d3.svg.line()
+      // assign the X function to plot our line as we wish
+      .x(function(d,i) { 
+        // verbose logging to show what's actually being done
+        console.log('Plotting X value for data point: ' + d + ' using index: ' + i + ' to be at: ' + x(i) + ' using our xScale.');
+        // return the X coordinate where we want to plot this datapoint
+        return x(i); 
+      })
+      .y(function(d) { 
+        // verbose logging to show what's actually being done
+        console.log('Plotting Y value for data point: ' + d + ' to be at: ' + y(d) + " using our yScale.");
+        // return the Y coordinate where we want to plot this datapoint
+        return y(d); 
+      })
+
+      // Add an SVG element with the desired dimensions and margin.
+      var graph = d3.select("#graph").append("svg:svg")
+            .attr("width", w + m[1] + m[3])
+            .attr("height", h + m[0] + m[2])
+          .append("svg:g")
+            .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+      // create yAxis
+
+
+
+      // create left yAxis
+
+      
+        // Add the line by appending an svg:path element with the data line we created above
+      // do this AFTER the axes above so that the line is above the tick-lines
+        graph.append("svg:path").attr("d", line(data));
+
+  }
+
+</script>
+ 
+
+
+
+
 </body>
 </html>

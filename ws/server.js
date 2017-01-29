@@ -1,8 +1,7 @@
 var express = require('express');
 var app = express();
-var DBController = require('./DBController');
 var DAOontroller = require('./DAOController');
-
+var DAController = require('./DBContoller.js');
 
 
 var port = process.env.PORT || 3000;
@@ -17,13 +16,12 @@ app.use(function(req,res,next){
     next();
 });
 
-//call one time for add json to DB
-app.get('/mlab16/insertTODB',DBController.setData);
-//get json to homePage
-app.get('/mlab16/getHomePage',DAOontroller.getHomePage);
-//get json to artistProfile
-app.get('/mlab16/getArtistProfile',DAOontroller.getArtistProfile);
-
+//insert json files to db
+app.get('/mlab16/insert',DAController.setData);
+//get details for homePage
+app.get('/mlab16/getHomePageDetails',DAOontroller.getHomePageDetails);
+//
+app.get('/lab16/getHomePageDetails',DAOontroller.getHomePageDetails);
 
 app.listen(port);
 console.log("service is listeing on port: " + port);

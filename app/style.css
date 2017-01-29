@@ -12,13 +12,23 @@ top: 0;
 left: 0;
 background-size: 100%;
 }
+@font-face {
+   font-family: BlenderCondensed;
+   src: url('../includes/BlenderCondensed.otf');
+}
+@font-face {
+   font-family: Blender; 
+   src: url('../includes/Blender.otf');
+}
+@font-face {
+   font-family: BlenderBold; 
+   src: url('../includes/BlenderBold.otf');
+}
 #wrapper {
   margin: 0 auto;
   width: 100%;
 }
-.graph .labels.x-labels {
-  text-anchor: middle;
-}
+
 
 .graph .labels.y-labels {
   text-anchor: end;
@@ -33,42 +43,56 @@ text{
     position: absolute;
     top: 80%;
 }
-
-.graph .grid {
-  stroke: #ccc;
-  stroke-dasharray: 0;
-  stroke-width: 3;
+#yearLine{
+    width: 80%;
+    position: absolute;
+    height: 0.7%;
+    background: #ffffff;
+    top: 83.5%;
+    left: 4.8%;
+    background-image: url('images/graph.png');
 }
-
-.labels {
-  font-size: 13px;
+#yearLine .left{
+    border-left: 1px #fff solid;
+    height: 53%;
+    width: 22%;
+    top: -24px;
+    position: relative;
 }
-
-.label-title {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 12px;
-  fill: black;
+#yearLine .right{
+    border-right: 1px #fff solid;
+    height: 53%;
+    width: 22%;
+    top: -24px;
+    position: relative;
+    left: 99.9%;
 }
-
-.data {
-  fill: black;
-  stroke-width: 1; 
+#yearLine h6{
+    color: white;
+    font-family: Blender;
+    font-weight: normal;
+    font-size: 0.9em;
+    top: -25px;
+    position: relative;
 }
+#yearLine .y2016{
+    left: 97.5%;
+    top:-60px;
+} 
 /* End of graph */
 
 /*header*/
 nav{
   position: absolute;
-  right: 1.83%;
-  top: 3%;
+  right: 1.4%;
+  top: 5%;
   width: 11.5%;
   text-align: right;
-  z-index: 20;
+  z-index: 99999990;
 }
 nav section{
   background: rgba(100, 100, 100, 0.6);
-  margin-bottom: 3%;
+  margin-bottom: 7%;
   position: relative;
 }
 section h5{
@@ -77,6 +101,7 @@ section h5{
   text-align: center;
   padding: 4% 0% 4% 0%;
   margin: 0%;
+  font-size: 0.8em;
  }
 h5 span{
   margin: 0px 10px 0px 10px;
@@ -86,38 +111,67 @@ h5 span{
   font-size: 1.204em;/* Approximation due to font substitution */
 font-weight: 400;
 }
-ul{
-  margin: 0%;
+
+/*
+label
+*/
+
+input[type='radio'] {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: hidden;
+    border: 2px solid white;
 }
-li{
-  list-style: none;
+
+
+
+
+input[type='radio']:checked:after {
+    width: 10px;
+    height: 10px;
+    border-radius: 15px;
+    top: 5px;
+    position: relative;
+    background-color: #6acce0;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    color:#6acce0;
+    left: 5%;
+}
+label{
+  display: block;
+  direction: rtl;
   color: #ffffff;
   font-size: 13px;
-  padding: 3% 15% 4.5% 5%;
+  padding: 3% 4% 4.5% 5%;
   font-family: "blender";
   cursor: pointer;
-  direction: rtl;
+  position: relative;
 }
-li span{
-  left: 20%;
+
+label span{
+  left: 15%;
   position: absolute;
 }
-li:hover{
-  padding: 3% 20% 4.5% 5%;
+label:hover{
+  padding: 3% 15% 4.5% 5%;
 }
-.blueColor{ /*changing css after clicking on li*/
-  color:#6acce0;
-  list-style-type: disc;
-  list-style-position: inside;
-  list-style-image:url('');
-}
+
 .divAlbum{
   display: block;
 }
 #container{
     width: 80%;
     top: 210px;
-    left: 90px;
+    left: 5%;
     position: absolute;
 }
 .clear{
@@ -137,12 +191,13 @@ li:hover{
     
 }
 nav h6{
- color: #ffffff;
+    color: #ffffff;
     text-align: center;
     font-family: "Blender";
-    font-size: 0.8em;
-    font-weight: 400;
+    font-size: 0.75em;
+    font-weight: 100;
     transform: scaleY(1.4);
+    margin-top: 3px;
 }
 nav h3{
    color: #ffffff;
@@ -158,58 +213,49 @@ nav h3{
   background: none;
 }
 img{
-   display: block;
-    width: 15px;
-    height:15px;
-    position: relative;
-    transition: all .35s;
-    transition-delay: all .35s;
-    cursor: pointer;
-    margin-bottom: 5px;
-
+  display: block;
+  width: 15px;
+  height:15px;
+  position: relative;
+  cursor: pointer;
+  z-index: 999999999;
+  margin-bottom: 5px;
+  -webkit-transition: all .4s ease-in-out;
+  -moz-transition: all .4s ease-in-out;
+  -o-transition: all .4s ease-in-out;
+  -ms-transition: all .4s ease-in-out;
 }
 img:hover {
-  transform: scale(9);
-  z-index: 99999999;
-  transition-delay: all 0s;
+    z-index: 9999999999;
+    -webkit-transform: scale(9); 
+    -moz-transform: scale(9);
+    -o-transform: scale(9);
+    transform: scale(9);
  }
  /*All the bottom data*/
  #footerData{
     bottom: 0%;
     position: absolute;
     width: 85%;
+    height: 100px;
  }
- .common_word,.common_hashtag,.common_category{
-  position: relative;
-  float: right;
-  padding-bottom: 4%;
+ .common_word,.common_hashtag,.common_category,.sum_words{
+position: relative;
+    float: right;
+    width: 17%;
+    direction: rtl;
+    font-size: 1.4em;
+    top: 25px;
  }
- .common_hashtag{
-  right:20%;
+ .sum_words{
+    right: 15%;
  }
-#commonWord{
+#commonWord,#commonHashtag,#commonCatregory,#sumWords{
     font-family: "Fb scorpion";
-    color: #ffffff;
+    color: #8b8b8b;
 }
 /*End of All the bottom data*/
 /* Cursor  */
-#current_year {
-    z-index: 3;
-    font-size: 12px;
-    font-weight: 700;
-    -webkit-transition: margin-left .3s linear;
-    -moz-transition: margin-left .3s linear;
-    transition: margin-left .3s linear;
-    margin-left: -175px;
-    width: 160px;
-    height: 16px;
-    margin-top: 37px;
-}
-
-#current_year span {
-    font-weight: 400;
-}
-
 #cursor,#line {
     background: #fff;
 }
@@ -223,16 +269,8 @@ img:hover {
     height: 100%;
 }
 #mouse_move {
-    z-index: 14;
+   z-index: 9999999;
     cursor: none;
-}
-
-.graph #mouse_move {
-    display: block;
-}
-
-.round #mouse_move {
-    display: none!important;
 }
 #cursor {
     width: 8px;
@@ -245,8 +283,26 @@ img:hover {
     transition: width .5s, height .5s, margin-left .5s, margin-top .5s, margin-right .5s, margin-bottom .5s;
     margin-left: -7px;
 }
-#current_year{
-  display: none;
+#current_year,#yearNow {
+    z-index: 3;
+    font-size: 11px;
+    -webkit-transition: margin-left .3s linear;
+    -moz-transition: margin-left .3s linear;
+    transition: margin-left .3s linear;
+    margin-left: 3px;
+    width: 130px;
+    height: 16px;
+    margin-top: 15px;
+    display: none;
+    text-align: left;
+}
+#yearNow{
+  position: relative;
+  top: 74%;
+  font-family: "Blender";
+}
+#current_year span {
+    font-weight: 400;
 }
 
 #current_year h6{
@@ -256,7 +312,7 @@ img:hover {
   direction: rtl;
   font-family: "Blender";
 }
-#current_year #position{
+#current_year #position, #yearNow h6{
   color:#6acce0;
    font-size: 1.3em;
 }
@@ -264,18 +320,64 @@ img:hover {
   font-weight: bold;
 }
 #songLyrics{
-  width: 270px;
-    background: rgba(100, 100, 100, 0.6);
+    width: 220px;
+    background: rgba(100, 100, 100, 0.9);
     color: #ffffff;
-    font-family: "Fb scorpion";
-    padding: 2em;
-    position: absolute;
-    z-index: 9999999999;
+    font-family: "Blender";
+    font-size: 0.8em;
+    padding: 1em;
+    position: relative;
+    z-index: 9999999;
     direction: rtl;
-    top: 70px;
-    left: -334px;
+    top: 10px;
     display: none;
+    margin-left: -100%;
+    height: 80%;
+}
+#songLyrics2{
+    width: 220px;
+    background: rgba(100, 100, 100, 0.9);
+    color: #ffffff;
+    font-family: "Blender";
+    font-size: 0.8em;
+    padding: 1em;
+    position: relative;
+    z-index: 9999999;
+    direction: rtl;
+    top: 10px;
+    display: none;
+    height: 80%;
 }
 
 
 /* end of Cursor  */
+
+/*graph line*/
+
+/* tell the SVG path to be a thin blue line without any area fill */
+/*path {
+stroke: steelblue;
+stroke-width: 1;
+fill: none;
+}
+
+.axis {
+shape-rendering: crispEdges;
+}
+
+.x.axis line {
+stroke: lightgrey;
+}
+
+.x.axis .minor {
+stroke-opacity: .5;
+}
+
+.x.axis path {
+display: none;
+}
+
+.y.axis line, .y.axis path {
+fill: none;
+stroke: #000;
+}*/

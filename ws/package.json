@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.4.7",
     "express": "^4.14.0",
     "install": "^0.8.4",
     "mongojs": "^2.4.0",

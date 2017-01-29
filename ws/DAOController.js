@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
-var HomePage = require('./homePage.js');
-var ArtistProfile = require('./artistProfile.js');
+var song = require('./homePageDetails.js');
+
+mongoose.Promise = global.Promise; 
 
 exports.getHomePage = function(req,res){
     console.log("inside getHomePage");
@@ -21,6 +22,18 @@ exports.getArtistProfile = function(req,res){
     //var userEmail = req.params.email;
 
     ArtistProfile.find({}).select().
+    exec(function(err,result){
+       console.log(result);
+       res.json(result);
+    });
+
+}
+
+
+exports.getHomePageDetails = function(req,res){
+    console.log("inside getHomePageDetails");
+    //var userEmail = req.params.email;
+    song.find({}).sort('year').
     exec(function(err,result){
        console.log(result);
        res.json(result);
